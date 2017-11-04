@@ -1,16 +1,10 @@
-// orat.io integration
 module.exports = (Franz) => {
-  function getMessages() {
-    let direct = 0;
-    let indirect = 0;
-    const FranzData = document.querySelector('#FranzMessages').dataset;
-    if (FranzData) {
-      direct = FranzData.direct;
-      indirect = FranzData.indirect;
-    }
+  const getMessages = function getMessages() {
+	  //all overdue items are being counted
+    const count = document.querySelectorAll('.duedate-overdue').length;
 
-    Franz.setBadge(direct, indirect);
-  }
-
+    Franz.setBadge(count);
+	
+  };
   Franz.loop(getMessages);
-}
+};
